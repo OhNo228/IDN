@@ -10,14 +10,17 @@ import {
   Shield,
   LayoutGrid,
   TrendingUp,
-  FileOutput
+  FileOutput,
+  type LucideIcon
 } from 'lucide-react';
 
 interface Agent {
   name: string;
-  icon: any;
+  icon: LucideIcon;
   description: string;
   confidence: number;
+  model: string;
+  modelColor: string;
 }
 
 export default function AgentShowcase() {
@@ -26,73 +29,97 @@ export default function AgentShowcase() {
       name: 'Orchestrator',
       icon: Workflow,
       description: 'Координує всі процеси та агентів',
-      confidence: 98
+      confidence: 98,
+      model: 'Multi-LLM',
+      modelColor: 'bg-slate-600 text-slate-200'
     },
     {
       name: 'Problem Framing',
       icon: MessageCircle,
       description: 'Уточнює контекст, цілі та KPI',
-      confidence: 92
+      confidence: 92,
+      model: 'Claude',
+      modelColor: 'bg-orange-600/30 text-orange-300'
     },
     {
       name: 'Hypothesis Decomposer',
       icon: GitBranch,
       description: 'Розбиває на перевірювані гіпотези',
-      confidence: 89
+      confidence: 89,
+      model: 'GPT-4',
+      modelColor: 'bg-emerald-600/30 text-emerald-300'
     },
     {
       name: 'Market Intelligence',
       icon: Globe,
       description: 'TAM/SAM/SOM, тренди, аналітика ринку',
-      confidence: 87
+      confidence: 87,
+      model: 'GPT-4',
+      modelColor: 'bg-emerald-600/30 text-emerald-300'
     },
     {
       name: 'Competitive Analysis',
       icon: Target,
       description: 'SWOT, positioning, конкурентна карта',
-      confidence: 85
+      confidence: 85,
+      model: 'Gemini',
+      modelColor: 'bg-violet-600/30 text-violet-300'
     },
     {
       name: 'Financial Modeling',
       icon: DollarSign,
       description: 'P&L, ROI, NPV, сценарії',
-      confidence: 91
+      confidence: 91,
+      model: 'GPT-4',
+      modelColor: 'bg-emerald-600/30 text-emerald-300'
     },
     {
       name: 'Risk Assessment',
       icon: AlertTriangle,
       description: 'Ризики, ймовірність, mitigation',
-      confidence: 88
+      confidence: 88,
+      model: 'Claude',
+      modelColor: 'bg-orange-600/30 text-orange-300'
     },
     {
       name: 'Strategy Frameworks',
       icon: Compass,
       description: 'Porter, Ansoff, Blue Ocean, JTBD',
-      confidence: 86
+      confidence: 86,
+      model: 'Gemini',
+      modelColor: 'bg-violet-600/30 text-violet-300'
     },
     {
       name: 'Advocate',
       icon: Shield,
       description: 'Критичні питання та перевірка',
-      confidence: 90
+      confidence: 90,
+      model: 'Claude',
+      modelColor: 'bg-orange-600/30 text-orange-300'
     },
     {
       name: 'Scenario Planner',
       icon: LayoutGrid,
       description: 'Альтернативні сценарії з метриками',
-      confidence: 84
+      confidence: 84,
+      model: 'GPT-4',
+      modelColor: 'bg-emerald-600/30 text-emerald-300'
     },
     {
       name: 'Decision Synthesizer',
       icon: TrendingUp,
       description: 'Зведення всіх даних у рекомендацію',
-      confidence: 93
+      confidence: 93,
+      model: 'Claude',
+      modelColor: 'bg-orange-600/30 text-orange-300'
     },
     {
       name: 'Output Agent',
       icon: FileOutput,
       description: 'Форматування звітів та PDF',
-      confidence: 95
+      confidence: 95,
+      model: 'GPT-4',
+      modelColor: 'bg-emerald-600/30 text-emerald-300'
     }
   ];
 
@@ -128,9 +155,13 @@ export default function AgentShowcase() {
                 {agent.name}
               </h3>
 
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed mb-3">
                 {agent.description}
               </p>
+
+              <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full ${agent.modelColor}`}>
+                {agent.model}
+              </span>
             </div>
           ))}
         </div>
